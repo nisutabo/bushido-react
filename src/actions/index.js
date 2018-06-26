@@ -1,4 +1,5 @@
-const URL = 'http://localhost:9000/api/v1'
+const URL = 'https://stark-wave-85462.herokuapp.com/api/v1'
+
 
 
 export function signUp(name, username, password, history){
