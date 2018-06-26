@@ -23,6 +23,14 @@ export default function manageEntries (
 
     }
 
+    case 'RESTORE_USER_DATA':
+    return {
+      ...state,
+      loggedIn: true,
+      currentUser: action.payload.user,
+      entries: action.payload.entries
+    }
+
     case 'LOG_OUT':
     localStorage.removeItem('token')
     return {
@@ -33,7 +41,7 @@ export default function manageEntries (
 
     case 'ADD_ACTION':
     return {
-      
+
       entries: [...state.entries, action.payload],
       loggedIn: true
     }

@@ -81,7 +81,6 @@ class Sidebar extends Component {
   }
 
   render(){
-    console.log(this.state.newActionStart > this.state.newActionEnd)
     return (
       <div style={{ marginTop: '10%', marginLeft: '10%', fontSize: '10px', height: '487px'}}>
         <div style={{fontSize: '80%', color: 'rgb(89, 95, 104)'}}>

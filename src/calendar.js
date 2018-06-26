@@ -26,7 +26,6 @@ class Calendar extends Component {
     isOverlayOpen: false,
 
     formOpen: false,
-    newMeditationUserID: this.props.user.id,
     newMeditationTitle: '',
     newMeditationStart: moment(),
     newMeditationEnd: moment(),
@@ -130,7 +129,8 @@ class Calendar extends Component {
       })
     }
     if (this.state.newMeditationTitle !== '' && this.state.newMeditationDesc !== ''){
-      this.props.addMeditation(this.state);
+
+      this.props.addMeditation(this.state, this.props.user.id);
       this.setState({
         newMeditationTitle: '',
         newMeditationStart: moment(),
@@ -236,7 +236,7 @@ class Calendar extends Component {
 
 
   render(){
-    console.log(this.state.newMeditationUserID);
+
     const importantMeditation = () => {
       return (
         <Card elevation={Elevation.ZERO} className='keycard'>

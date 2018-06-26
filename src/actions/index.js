@@ -1,7 +1,6 @@
 const URL = 'https://stark-wave-85462.herokuapp.com/api/v1'
 
 
-
 export function signUp(name, username, password, history){
   return function(dispatch){
     fetch(`${URL}/signup`, {
@@ -43,7 +42,7 @@ export function logIn(username, password, history){
       } else {
         localStorage.setItem("token", response.jwt)
         dispatch({
-          type: "GET_USER_DATA",
+          type: "RESTORE_USER_DATA",
           payload: response
         })
       }
@@ -64,7 +63,6 @@ export function getUser(jwt, history){
     })
     .then(res => res.json())
     .then(response => {
-
       dispatch({
         type: "GET_USER_DATA",
         payload: response
@@ -122,7 +120,7 @@ export const logOut = (history) => {
   }
 }
 
-export const addMeditation = (entry) => {
+export const addMeditation = (entry, id) => {
   return (dispatch) => {
     return fetch(`${URL}/entries`, {
       method: 'POST',
@@ -130,7 +128,7 @@ export const addMeditation = (entry) => {
       'Content-Type': 'application/json'
     },
       body: JSON.stringify({
-        user_id: entry.newMeditationUserID,
+        user_id: id,
         start_date: entry.newMeditationStart,
         end_date: entry.newMeditationEnd,
         title: entry.newMeditationTitle,
